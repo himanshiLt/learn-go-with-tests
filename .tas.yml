@@ -27,3 +27,5 @@ postMerge:
         command:
             - "go get -d ./..."
             - "go mod vendor"
+            
+ #test
