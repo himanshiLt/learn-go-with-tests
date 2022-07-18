@@ -1,29 +1,12 @@
-# THIS IS A SAMPLE ".tas.yml" CONFIGURATION FILE.
-# FIRSTLY - You need to specify which testing framework you are using. Currently supported JS frameworks are : mocha, jest and jasmine.
-version: 2.0.0
-preMerge :
-  subModules:
-    - name: package-1
-      path : "./"
-      pattern:
-        # glob-patterns to discover tests to run in case of postMerge
-        - ""
-      framework : golang
-      preRun: 
-        runEveryTime: false # if set to true it will run on test execution as well
-        command:
-            - "go get -d ./..."
-            - "go mod vendor"
-postMerge: 
-  subModules:
-    - name: package-1
-      path : "./"
-      pattern:
-        # glob-patterns to discover tests to run in case of postMerge
-        - ""
-      framework : golang
-      preRun: 
-        runEveryTime: false # if set to true it will run on test execution as well
-        command:
-            - "go get -d ./..."
-            - "go mod vendor"
+---
+framework: golang
+version: 1.2.0
+preRun:
+  command:
+    - "go get -d ./..."
+    - export GO111MODULE="on"
+    - "go mod vendor"
+
+postMerge:
+  pattern:
+    - "./**/*_test.go"
