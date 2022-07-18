@@ -9,4 +9,4 @@ preRun:
 
 postMerge:
   pattern:
-    - "./structs/v8"
+    - "./**/*_test.go"
